@@ -48,10 +48,45 @@
         <%= link_to "PhotoApp", images_path, class: "navbar-brand"  %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
-            <li><%= link_to "Upload Image", new_image_path  %></li>
-            <li><%= link_to "My Images", myimages_path  %></li>
+            <li>
+              <div id="friend-lookup">
+                <%= form_tag search_friends_path, remote: true, method: :get, id: "friends-lookup-form" do %>
+                  <div class="form-group row no-padding text-center col-md-12">
+                    <div class="col-md-10">
+                      <%=  text_field_tag :search_param, params[:search_param], placeholder: "Enter name or email", autofocus: true, 
+                                                class: "form-control search-box input-lg" %>
+                    </div>
+                    <div class="col-md-2">
+                      <%= button_tag(type: :submit, class: "btn btn-lg btn-success") do %>
+                        <i class="fa fa-search"></i> Search
+                      <% end %>
+                    </div>
+                  </div>
+                
+                <% end %>
+              </div>
+            </li>
           </ul>
           <ul class="nav navbar-right col-md-4">
+            <% if current_user %>
+              <li class="dropdown col-md-6 pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-user"></i><%= current_user.full_name.present? ? current_user.full_name : current_user.email %><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
+                  <li><%= link_to "Upload Image", new_image_path  %></li>
+                  <li role="separator" class="divider"></li>
+                  <li><%= link_to('Logout', destroy_user_session_path,
+                                class: 'btn btn-xs btn-danger', title: 'Logout', :method => :delete) %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="col-md-4 pull-right">
+                <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
+              </li>
+            <% end %>
+          </ul>
+          <!--  <ul class="nav navbar-right col-md-4">
             <% if current_user %>
               <li class="col-md-8 user-name">
                 <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe,
@@ -65,7 +100,7 @@
                 <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary', title: 'Sign In') %>
               </li>
             <% end %>
-          </ul>
+          </ul>-->
         </div>
       </div>
     </div>

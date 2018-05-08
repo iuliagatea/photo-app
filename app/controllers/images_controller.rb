@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   def show
   end
   
-  def myimages
+  def my_images
     @images = Image.where("user_id like? ", "#{current_user.id}")
   end
 

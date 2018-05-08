@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'registrations' }
   root 'welcome#index'
 
-  get 'myimages' => 'images#myimages'
+  get 'my_profile' => 'images#my_images'
+  get 'my_friends', to: 'users#my_friends'
+  resources :users, only: [:show]
+  resources :friendships
+  get 'search_friends', to: 'users#search'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
