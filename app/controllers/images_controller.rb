@@ -11,6 +11,10 @@ class ImagesController < ApplicationController
   # GET /images/1.json
   def show
   end
+  
+  def myimages
+    @images = Image.where("user_id like? ", "#{current_user.id}")
+  end
 
   # GET /images/new
   def new
