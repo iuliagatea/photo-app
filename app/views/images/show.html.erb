@@ -1,15 +1,15 @@
 <%- model_class = Image -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %> Feed</h1>
+  <h1><%= @image.name %></h1>
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @image.name %></dd>
   <dt></dt>
-  <dd><%= image_tag(@image.picture.url, size: "250x250") if @image.picture %></dd>
+  <dd><%= image_tag(@image.picture.url) if @image.picture %></dd>
+  <dt></dt>
+  <dd>Added by: <%= @user.email %></dd>
 </dl>
-
+<%= commontator_thread(@image) %>
 <%= link_to t('.back', :default => t("helpers.links.back")),
               images_path, :class => 'btn btn-default'  %>
 <% if @image.user_id == current_user.id %>

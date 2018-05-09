@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post 'search_friends', to: 'users#search'
   post 'add_friend', to: 'users#add_friend'
   get 'search_for_friends', to: 'users#search_for_friends'
+  
+  mount Commontator::Engine => '/commontator'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

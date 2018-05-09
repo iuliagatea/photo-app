@@ -10,6 +10,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    commontator_thread_show(@image)
+    @user = User.find(@image.user_id)
   end
   
   def my_images
@@ -23,6 +25,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1/edit
   def edit
+    
   end
 
   # POST /images
