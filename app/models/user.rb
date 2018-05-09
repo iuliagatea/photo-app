@@ -11,14 +11,13 @@ class User < ActiveRecord::Base
   
   def full_name
     return "#{first_name} #{last_name}".strip if (first_name || last_name)
-    "Anonymous"
+    "#{email}"
   end
   
   def self.search(param)
     param.strip!
     param.downcase!
-    to_send_back = (first_name_matches(param) + last_name_matches(param) 
-                                + email_matches(param)).uniq
+    to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
     return nil unless to_send_back
     to_send_back
   end
@@ -39,4 +38,11 @@ class User < ActiveRecord::Base
     where("#{field_name} like ?", "%#{param}%")
   end
   
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+  
+  def not_friends_with?(friend_id)
+    friendships.where(friend_id: friend_id).count < 1
+  end
 end

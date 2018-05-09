@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get 'my_profile' => 'images#my_images'
-  get 'my_friends', to: 'users#my_friends'
   resources :users, only: [:show]
   resources :friendships
-  get 'search_friends', to: 'users#search'
+
+  get 'my_friends', to: 'users#my_friends'
+  post 'search_friends', to: 'users#search'
+  post 'add_friend', to: 'users#add_friend'
+  get 'search_for_friends', to: 'users#search_for_friends'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
