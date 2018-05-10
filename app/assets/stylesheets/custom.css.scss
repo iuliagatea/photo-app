@@ -102,6 +102,15 @@
     font-size: 30px;
     line-height: 20px;
     height: 49px;
+    color: #777;
+}
+.navbar-brand-new:hover,.navbar-brand-new:focus {
+  text-decoration: none;
+  color: #777;
+  background-color: transparent;
+}
+.navbar-brand-new>img {
+  display:block
 }
 
 .center {
@@ -111,4 +120,21 @@
 .user {
   /*text-align: left;*/
   font-size: 15px;
+}
+
+.image-size {
+  max-width: 500px;
+  max-height: 800px;
+}
+
+.ratings {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.actions {
+  float: right;
+  margin-right: 70%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

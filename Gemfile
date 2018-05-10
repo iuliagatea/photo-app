@@ -9,6 +9,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'stripe'
 gem 'commontator', '~> 4.11', '>= 4.11.1'
+gem 'seems_rateable', '~> 2.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

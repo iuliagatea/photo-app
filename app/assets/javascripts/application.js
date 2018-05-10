@@ -14,5 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require_tree .
+//= require_tree
+//= require seems_rateable
+//= require_directory ./rateable
 

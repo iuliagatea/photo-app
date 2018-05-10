@@ -1,0 +1,10 @@
+<h2><%= @user.first_name.present? ? @user.first_name : @user.email %>'s Profile</h2>
+
+<h3>Posts</h3>
+<% if @user.images.size > 0 %>
+  <%= render 'images/show' %>
+<% else %>
+  <p class="lead">This user has no images uploaded</p>
+<% end %>
+<%= render 'users/friends' %>
+

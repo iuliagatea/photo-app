@@ -13,5 +13,7 @@
  *= require devise_bootstrap_views
  *= require_tree .
  *= require_self
+ *= require seems_rateable
+
  *= require commontator/application
  */

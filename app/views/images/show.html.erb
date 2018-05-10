@@ -8,6 +8,8 @@
   <dd><%= image_tag(@image.picture.url) if @image.picture %></dd>
   <dt></dt>
   <dd>Added by: <%= @user.email %></dd>
+  <dt></dt>
+  <dd><%= rating_for @image %></dd>
 </dl>
 <%= commontator_thread(@image) %>
 <%= link_to t('.back', :default => t("helpers.links.back")),

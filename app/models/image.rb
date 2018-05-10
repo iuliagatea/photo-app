@@ -3,6 +3,7 @@ class Image < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
   validate :picture_size
   acts_as_commontable
+  seems_rateable # :quality, :speed, :effectiveness
   
   private
   def picture_size

@@ -16,6 +16,8 @@ class ImagesController < ApplicationController
   
   def my_images
     @images = Image.where("user_id like? ", "#{current_user.id}")
+    @user = current_user
+    @users = @user.friends
   end
 
   # GET /images/new
