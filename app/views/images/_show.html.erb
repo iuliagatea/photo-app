@@ -4,6 +4,7 @@
     <div class="user"> <%= link_to user.full_name, user, title: "View profile" %> </div>
     <%= time_ago_in_words(image.updated_at) %> ago
     <div class="image"><%= link_to image_tag(image.picture.url, class: "image-size", title: image.name), image_path(image) %></div>
+    <div class="description"><%= image.description %></div>
     <% if image.user_id == current_user.id %>
       <div class="ratings">
         <%= rating_for image, disabled: true %>

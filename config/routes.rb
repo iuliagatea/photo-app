@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :images
   devise_for :users, :controllers => { :registrations => 'registrations' }
   root 'welcome#index'
-  get 'newsfeed' => 'images#index'
   get 'my_profile' => 'images#my_images'
   resources :users, only: [:show]
   resources :friendships

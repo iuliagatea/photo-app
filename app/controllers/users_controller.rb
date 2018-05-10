@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def my_friends
     @friendships = current_user.friends
   end
+  
   def search_for_friends
     @friendships = current_user.friends
     if params[:search_param].blank?
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
       flash.now[:danger] = "No users match this search criteria" if @users.blank?
     end
   end
+  
   def search
     redirect_to search_for_friends_path(request.parameters)
   end
@@ -27,7 +29,7 @@ class UsersController < ApplicationController
     end
     redirect_to my_friends_path
   end
-  
+
   def show
     @user = User.find(params[:id])
     @users = @user.friends
